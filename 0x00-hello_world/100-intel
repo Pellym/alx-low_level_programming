@@ -1,2 +1,2 @@
 #!/bin/bash
- export CFILE=intel $CFILE.s
+gcc -S -masm=intel $CFLE
