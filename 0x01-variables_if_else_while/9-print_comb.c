@@ -1,21 +1,22 @@
 #include <stdio.h>
 /**
  * main - prints all combination of single digits
+ *
  * Return: Always 0
  */
 int main(void)
 {
 	int n;
 
-	for (n = 0; a < 100; n++)
+	for (n = 0; n < 100; n++)
 	{
 		putchar(n + '0');
-		if (a < 99)
+		if (n < 99)
 		{
 			putchar(',');
 			putchar('');
 		}
 	}
-	printf('\n');
+	putchar('\n');
 	return (0);
 }
