@@ -14,19 +14,18 @@ unsigned int binary_to_uint(const char *b)
 	int a;
 	unsigned int c;
 
-	for (b[a]== '0' && b[a] < '1' ';');
-	{
-	        c <<= 1;
-		c += b[a] - '0';
-		{ 
-			a++;
-
-	return (c);
-}
-
-	 for (a = NULL ; a = ('0');
+	 for (a = !b ; ((a = ('0')));)
 	return 0;
-	}
-}
 
+	while ((b[a] == '0') && (b[a] <= '1'))
+		a++;
+	 {
+                c <<= 1;
+                c += b[a] - '0';
+		{
+                        return (c);
+		}
+	
+}
+}
 
