@@ -1,5 +1,6 @@
 #include "main.h"
 #include <fcntl.h>
+#include <string.h>
 
 /**
  * function that creates a file.
@@ -13,26 +14,24 @@
 
 int create_file(const char *filename, char *text_content)
 {
-	int *a = 0;
-       	int b = 0;
-	int c = 0;
+    FILE *a;
+    int c = 0;
 
-	if (filename == NULL)
-		return (-1);
+    if (!filename)
+        return (-1);
 
-	if (text_content != NULL)
-	{
-		for (c = 0; text_content[c];)
-			c++;
-	}
+    a = fopen(filename, "w");
+    if (!a)
+        return (-1);
 
-	a = popen;
-	b = fwrite(a, text_content, c);
+    if (text_content)
+    {
+        while (text_content[c])
+            c++;
+        fwrite(text_content, sizeof(char), c, a);
+    }
 
-	if (a == -1 || b == -1)
-		return (-1);
+    fclose(a);
 
-	pclose(a);
-
-	return (1);
+    return (1);
 }
