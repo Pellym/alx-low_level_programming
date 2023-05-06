@@ -1,24 +1,23 @@
 #include "main.h"
-
+#include <stdio.h>
 /**
- * get_bit - returns the value of a bit at a given index.
- * @n: the number to get the bit from
- * @index: the index of the bit to get, starting from 0 for the least significant bit
+ * flip_bits - returns the number of bits you would need to flip to get from one number to another
+ * @n: the first number
+ * @m: the second number
  *
- * Return: the value of the bit at the given index, or -1 if an error occurs
+ * Return: the number of bits needed to be flipped
  */
-int get_bit(unsigned long int n, unsigned int index)
+unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-    /* Check if the index is valid for the given number */
-    if (index >= sizeof(unsigned long int) * 8) {
-        return (-1);
-    }
+	unsigned int count = 0;
+	unsigned long int i = n ^ m;
 
-    /* Shift the number right to get the bit at the desired index in the least significant position */
-    unsigned long int mask = 1UL << index;
-    unsigned long int bit = (n & mask) >> index;
+	while (i != 0)
+	{
+		count++;
+		i &= (i - 1);
+	}
 
-    /* Return the value of the bit (0 or 1) */
-    return bit;
+	/* Return the count of 1's */
+	return (count);
 }
-
