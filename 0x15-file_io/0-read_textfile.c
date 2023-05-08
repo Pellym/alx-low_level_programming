@@ -12,32 +12,34 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-        FILE *fptr;
-        char buffer[1024];
-        size_t count;
+	FILE *fptr;
+	char buffer[1024];
+	size_t count;
 
-        fptr = fopen(filename, "r");
-        if (fptr == NULL)
-        {
-                fprintf(stderr, "Error: Can't read from file %s\n", filename);
-                return (0);
-        }
+	fptr = fopen(filename, "r");
 
-        count = fread(buffer, sizeof(char), letters, fptr);
-        if (count == 0)
-        {
-                fprintf(stderr, "Error: Can't read from file %s\n", filename);
-                fclose(fptr);
-                return (0);
-        }
+	if (fptr == NULL)
+	{
+		fprintf(stderr, "Error: Can't read from file %s\n", filename);
+		return (0);
+	}
 
-        if (fwrite(buffer, sizeof(char), count, stdout) != count)
-        {
-                fprintf(stderr, "Error: Can't write to stdout\n");
-                fclose(fptr);
-                return (0);
-        }
+	count = fread(buffer, sizeof(char), letters, fptr);
 
-        fclose(fptr);
-        return (count);
+	if (count == 0)
+	{
+		fprintf(stderr, "Error: Can't read from file %s\n", filename);
+		fclose(fptr);
+		return (0);
+	}
+
+	if (fwrite(buffer, sizeof(char), count, stdout) != count)
+	{
+		fprintf(stderr, "Error: Can't write to stdout\n");
+		fclose(fptr);
+		return (0);
+	}
+
+	fclose(fptr);
+	return (count);
 }
